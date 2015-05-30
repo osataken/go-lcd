@@ -6,13 +6,19 @@ type Lcd struct {
 }
 
 func (l *Lcd) print(number string) string {
-	firstLineTemplate := [...]string{" _ ", "   ", " _ "}
+	firstLineTemplate :=  [...]string{" _ ", "   ", " _ "}
+	secondLineTemplate := [...]string{"| |", "  |", "  |"}
 
-	result := ""
+	firstLineResult := ""
+	secondLineResult := ""
 	for _, runeValue := range number {
 		digit,_ := strconv.Atoi(string(runeValue))
-		result += firstLineTemplate[digit]
+		firstLineResult += firstLineTemplate[digit]
+		secondLineResult += secondLineTemplate[digit]
 	}
 
+	result := firstLineResult + "\n"
+	result += secondLineResult + "\n"
+	
         return result
 }
