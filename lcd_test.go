@@ -5,13 +5,6 @@ import (
 	"strings"
 )
 
-type Lcd struct {
-}
-
-func (l *Lcd) print(number string) string {
-	return " _ "
-}
-
 func TestPrintFirstLineOfZeroCharacter(t *testing.T) {
 	lcd := Lcd{}
 	if !strings.EqualFold(" _ ", lcd.print("0")) {
