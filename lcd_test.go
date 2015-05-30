@@ -9,7 +9,7 @@ type Lcd struct {
 }
 
 func (l *Lcd) print(number string) string {
-	return ""
+	return " _ "
 }
 
 func TestPrintFirstLineOfZeroCharacter(t *testing.T) {
