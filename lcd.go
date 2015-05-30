@@ -1,28 +1,24 @@
 package lcd
 
 import "strconv"
+import "fmt"
 
 type Lcd struct {
 }
 
 func (l *Lcd) print(number string) string {
-	firstLineTemplate :=  [...]string{" _ ", "   ", " _ "}
-	secondLineTemplate := [...]string{"| |", "  |", " _|"}
-	thirdLineTemplate :=  [...]string{"|_|", "  |", "|_ "}
-
-	firstLineResult := ""
-	secondLineResult := ""
-	thirdLineResult := ""
-	for _, runeValue := range number {
-		digit,_ := strconv.Atoi(string(runeValue))
-		firstLineResult += firstLineTemplate[digit]
-		secondLineResult += secondLineTemplate[digit]
-		thirdLineResult += thirdLineTemplate[digit]
+	lineTemplate := [][]string{
+		[]string{" _ ", "   ", " _ "},
+		[]string{"| |", "  |", " _|"},
+		[]string{"|_|", "  |", "|_ "},
 	}
 
-	result := firstLineResult + "\n"
-	result += secondLineResult + "\n"
-	result += thirdLineResult + "\n"
-	
-        return result
+	line := []string{"", "", ""}
+	for _, runeValue := range number {
+		digit, _ := strconv.Atoi(string(runeValue))
+		line[0] += lineTemplate[0][digit]
+		line[1] += lineTemplate[1][digit]
+		line[2] += lineTemplate[2][digit]
+	}
+	return fmt.Sprintf("%s\n%s\n%s\n", line[0], line[1], line[2])
 }
