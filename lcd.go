@@ -1,14 +1,18 @@
 package lcd
 
-import "strings"
+import "strconv"
 
 type Lcd struct {
 }
 
 func (l *Lcd) print(number string) string {
-	if strings.EqualFold("02", number) {
-		return " _  _ "
+	firstLineTemplate := [...]string{" _ ", "   ", " _ "}
+
+	result := ""
+	for _, runeValue := range number {
+		digit,_ := strconv.Atoi(string(runeValue))
+		result += firstLineTemplate[digit]
 	}
 
-        return " _ "
+        return result
 }

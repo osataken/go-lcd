@@ -7,14 +7,41 @@ import (
 
 func TestPrintFirstLineOfOneDigitNumber(t *testing.T) {
 	lcd := Lcd{}
-	if !strings.EqualFold(" _ ", lcd.print("0")) {
-		t.Errorf("Expected ` _ ` but was %v", lcd.print("0"))
+	expected := " _ "
+	result := lcd.print("0")
+	
+	if !strings.EqualFold(expected, result) {
+		t.Errorf("Expected %v but was %v", expected, result)
 	}
 }
 
 func TestPrintFirstLineOfTwoDigitsNumber(t *testing.T) {
 	lcd := Lcd{}
-	if !strings.EqualFold(" _  _ ", lcd.print("02")) {
-		t.Errorf("Expected ` _  _ ` but was %v", lcd.print("02"))
+	expected := " _  _ "
+	result := lcd.print("02")
+
+	if !strings.EqualFold(expected, result) {
+		t.Errorf("Expected %v but was %v", expected, result)
+	}
+}
+
+func TestPrintFirstLineOfThreeDigitsNumber(t *testing.T) {
+	lcd := Lcd{}
+	expected := " _  _    "
+	result := lcd.print("021")
+
+	if !strings.EqualFold(expected, result) {
+		t.Errorf("Expected %v but was %v", expected, result)
+	}
+}
+
+func TestPrintTwoLineOfThreeDigitsNumber(t *testing.T) {
+	lcd := Lcd{}
+	expected := " _  _    " +
+                    "| |  |  |"
+	result := lcd.print("021")
+
+	if !strings.EqualFold(expected, result) {
+		t.Errorf("Expected %v but was %v", expected, result)	
 	}
 }
